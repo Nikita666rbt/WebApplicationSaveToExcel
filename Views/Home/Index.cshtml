@@ -1,0 +1,59 @@
+﻿@model WebApplication4.Models.Organization
+
+@{
+    ViewBag.Title = "Организации";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+</head>
+<body>
+    <div class="form-container">
+
+        <h2>Добавление организации</h2>
+
+        @using (Html.BeginForm("Save", "Home", FormMethod.Post))
+        {
+            <div>
+                <label for="Name">Наименование организации:</label>
+                @Html.TextBoxFor(m => m.Name)
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div>
+                <label for="LegalAddress">Юридический адрес:</label>
+                @Html.TextBoxFor(m => m.LegalAddress)
+                @Html.ValidationMessageFor(m => m.LegalAddress)
+            </div>
+            <div>
+                <label for="Phone">Телефон:</label>
+                @Html.TextBoxFor(m => m.Phone)
+                @Html.ValidationMessageFor(m => m.Phone)
+            </div>
+            <div>
+                <label for="Email">Email:</label>
+                @Html.TextBoxFor(m => m.Email)
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div>
+                <button type="submit">Сохранить</button>
+            </div>
+        }
+
+        @if (TempData["Message"] != null)
+        {
+            <p>@TempData["Message"]</p>
+        }
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <div>
+                <button name="Clear" type="submit">Очистить</button>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
